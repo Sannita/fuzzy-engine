@@ -3,13 +3,13 @@ Fuzzy Logic engine
 ## processo
 1-Individuare le variabili di I/O del sistema con i rispettivi range
 
-Input:
+Es. Input:
 
 Distanza \[-100,100\] m
 
 Velocità \[-60,60\] m/s
 
-Output:
+Es. Output:
 
 Frenata \[0,10\] m/s^2
 
@@ -17,11 +17,13 @@ Accelerazione \[-10, 10\] m/s^2
 
 2-Determinare le classi di appartenza di ogni variabile con i rispettivi boundaries
 
-![classi](https://github.com/Sannita/fuzzy-engine/blob/main/image.jpg?raw=true)
+Es.
+
+![classi](docs/classi.png?raw=true)
 
 3-Definire le trasformazioni tramite FAM
 
-Se la distanza è piccola E la velocità è grande Allora la frenata è forte
+es. Se la distanza è piccola E la velocità è grande Allora la frenata è forte
 
 4-Modalità di defuzzyfication
 
