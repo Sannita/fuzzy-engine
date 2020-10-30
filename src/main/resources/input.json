@@ -1,0 +1,68 @@
+{
+  "shapes" : {
+    "0" : "Triangle"
+  },
+  "variables" : {
+    "input" : {
+      "0" : { "description" : "Distance", "min" : -250.0, "max" :  250.0, "unit" :  "m"},
+      "1" : { "description" : "Speed", "min" : -50.0, "max" :  50.0, "unit" :  "m/s"}
+    },
+    "output" : {
+      "0" : { "description" : "Brake", "min" : 0.0, "max" :  10.0, "unit" :  "m/s^2"},
+      "1" : { "description" : "Acceleration", "min" : -10.0, "max" :  10.0, "unit" :  "m/s^2"}
+    }
+  },
+  "classes" : {
+    "input" :
+    { "0" : [
+      {"name" : "LN", "description" : "Somewhere far beyond" , "shape" :  "0", "points" : [-250.0, -250.0, -150.0]},
+      {"name" : "MN", "description" : "Beyond" ,"shape" :  "0", "points" : [-200.0, -100.0, -50.0]},
+      {"name" : "SN", "description" : "Slightly past"  ,"shape" :  "0", "points" : [-100.0, -50.0, -10.0]},
+      {"name" : "ZE", "description" : "Destination" ,           "shape" :  "0", "points" : [-25.0, 0.0, 25.0]},
+      {"name" : "SP", "description" : "Near"  ,"shape" :  "0", "points" : [10.0, 50.0, 100.0]},
+      {"name" : "MP", "description" : "Medium Distance" ,"shape" :  "0", "points" : [50.0, 100.0, 200.0]},
+      {"name" : "LP", "description" : "Far"  ,"shape" :  "0", "points" : [150.0, 250.0, 250.0]}
+     ],
+      "1" : [
+      {"name" : "LN", "description" : "Crazy Backwards" , "shape" :  "0", "points" : [-50.0, -50.0, -25.0]},
+      {"name" : "MN", "description" : "Steady Backwards" ,"shape" :  "0", "points" : [-30.0, -20.0, -10.0]},
+      {"name" : "SN", "description" : "Slow Backwards"  ,"shape" :  "0", "points" : [-15.0, -10.0, 5.0]},
+      {"name" : "ZE", "description" : "Stopped" ,           "shape" :  "0", "points" : [-10.0, 0.0, 10.0]},
+      {"name" : "SP", "description" : "Small Speed"  ,"shape" :  "0", "points" : [5.0, 10.0, 15.0]},
+      {"name" : "MP", "description" : "Moderate Speed" ,"shape" :  "0", "points" : [10.0, 20.0, 30.0]},
+      {"name" : "LP", "description" : "Ludicrous Speed"  ,"shape" :  "0", "points" : [25.0, 50.0, 50.0]}
+     ]
+    },
+  "output" :
+    { "0" : [
+      {"name" : "ZE", "description" : "No Brake",    "shape" :  "0", "points" : [0.0, 0.0, 1.0]},
+      {"name" : "SP", "description" : "Weak Brake"  ,"shape" :  "0", "points" : [0.0, 1.0, 3.0]},
+      {"name" : "MP", "description" : "Medium Brake" ,"shape" :  "0", "points" : [2.0, 4.0, 6.0]},
+      {"name" : "LP", "description" : "Strong Brake"  ,"shape" :  "0", "points" : [5.0, 10.0, 10.0]}
+     ],
+      "1" : [
+        {"name" : "LN", "description" : "Strong Acceleration Backward" , "shape" :  "0", "points" : [-10.0, -10.0, -5.0]},
+        {"name" : "MN", "description" : "Medium Acceleration Backward" ,"shape" :  "0", "points" : [-6.0, -4.0, -2.0]},
+        {"name" : "SN", "description" : "Weak Acceleration Backward"  ,"shape" :  "0", "points" : [-3.0, -1.0, 0.0]},
+        {"name" : "ZE", "description" : "No Acceleration",           "shape" :  "0", "points" : [-1.0, 0.0, -1.0]},
+        {"name" : "SP", "description" : "Weak Acceleration Forward"  ,"shape" :  "0", "points" : [0.0, 1.0, 3.0]},
+        {"name" : "MP", "description" : "Medium Acceleration Forward" ,"shape" :  "0", "points" : [2.0, 4.0, 6.0]},
+        {"name" : "LP", "description" : "Strong Acceleration Forward"  ,"shape" :  "0", "points" : [5.0, 10.0, 10.0]}
+      ]
+    }
+  },
+  "rules" : [
+    "LN * LN : ZE"
+  ]
+}
+/*
+   LN MN SN ZE SP MP LP distance
+LN ZE SP MP LP LP LP LP
+MN ZE ZE SP MP LP LP LP
+SN ZE ZE ZE SP MP LP LP
+ZE ZE ZE ZE ZE ZE ZE ZE
+SP LP LP MP SP ZE ZE ZE
+MP LP LP LP MP SP ZE ZE
+LP LP LP LP LP MP SP ZE
+speed
+*/
