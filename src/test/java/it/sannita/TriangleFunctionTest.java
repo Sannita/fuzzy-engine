@@ -1,5 +1,6 @@
 package it.sannita;
 
+import it.sannita.functions.TriangleFunction;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -23,7 +24,7 @@ public class TriangleFunctionTest {
     }
 
     @Test
-    public void simmetric() {
+    public void symmetric() {
         TriangleFunction t = new TriangleFunction(0.0,1.0,2.0);
 
         assertEquals(0.0, t.fx(-1.0), 0);
@@ -36,7 +37,7 @@ public class TriangleFunctionTest {
     }
 
     @Test
-    public void rectangle1() {
+    public void negativeInfinity() {
         TriangleFunction t = new TriangleFunction(0.0,0.0,2.0);
 
         assertEquals(1.0, t.fx(-1.0), 0);
@@ -49,7 +50,7 @@ public class TriangleFunctionTest {
     }
 
     @Test
-    public void rectangle2() {
+    public void positiveInfinity() {
         TriangleFunction t = new TriangleFunction(0.0,2.0,2.0);
 
         assertEquals(0.0, t.fx(-1.0), 0);

@@ -1,4 +1,4 @@
-package it.sannita;
+package it.sannita.functions;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

@@ -1,7 +1,7 @@
 package it.sannita;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
+import it.sannita.functions.FuzzyFunction;
+import it.sannita.functions.TriangleFunction;
 
 public class Launcher {
     public static void main(String... args) {
