@@ -1,8 +1,7 @@
-package it.sannita;
+package it.sannita.fuzzy;
 
-import it.sannita.functions.FuzzyFunction;
-import it.sannita.functions.TriangleFunction;
-import it.sannita.functions.TriangleFunctionBuilder;
+import it.sannita.fuzzy.functions.FuzzyFunction;
+import it.sannita.fuzzy.functions.TriangleFunctionBuilder;
 
 public class Launcher {
     public static void main(String... args) {

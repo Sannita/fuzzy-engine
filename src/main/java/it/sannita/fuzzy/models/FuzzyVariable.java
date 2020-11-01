@@ -1,9 +1,11 @@
-package it.sannita.functions;
+package it.sannita.fuzzy.models;
 
 import java.math.BigDecimal;
+import java.util.Collections;
+import java.util.List;
 
 public final class FuzzyVariable {
-    private enum Type{
+    enum Type{
         INPUT, OUTPUT
     }
 
@@ -13,12 +15,15 @@ public final class FuzzyVariable {
     private final BigDecimal max;
     private final String unit;
 
-    public FuzzyVariable(Type type, String description, double min, double max, String unit) {
-        this.type = type;
-        this.description = description;
-        this.min = BigDecimal.valueOf(min);
-        this.max = BigDecimal.valueOf(max);
-        this.unit = unit;
+    private final List<FuzzyClass> classes;
+
+    public FuzzyVariable(FuzzyVariableBuilder builder) {
+        this.type = builder.getType();
+        this.description = builder.getDescription();
+        this.min = builder.getMin();
+        this.max = builder.getMax();
+        this.unit = builder.getUnit();
+        this.classes = Collections.unmodifiableList(builder.getClasses());
     }
 
     public Type getType() {
@@ -39,5 +44,9 @@ public final class FuzzyVariable {
 
     public String getUnit() {
         return unit;
+    }
+
+    public List<FuzzyClass> getClasses() {
+        return classes;
     }
 }

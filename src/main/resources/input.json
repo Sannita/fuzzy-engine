@@ -4,36 +4,28 @@
   },
   "variables" : {
     "input" : {
-      "0" : { "description" : "Distance", "min" : -200.0, "max" :  200.0, "unit" :  "m"},
-      "1" : { "description" : "Speed", "min" : -50.0, "max" :  50.0, "unit" :  "m/s"}
+      "0" : { "description" : "Distance", "min" : -200.0, "max" :  200.0, "unit" :  "m", "classes" : [
+        {"name" : "ZE", "description" : "Destination" , "function" :  "0", "points" : [-20.0, 0.0, 20.0]},
+        {"name" : "SP", "description" : "Near"  ,"function" :  "0", "points" : [10.0, 25.0, 50.0]},
+        {"name" : "MP", "description" : "Medium Distance" ,"function" :  "0", "points" : [25.0, 50.0, 100.0]},
+        {"name" : "LP", "description" : "Far"  ,"function" :  "0", "points" : [100.0, 200.0, 200.0]}
+      ]
+      },
+      "1" : { "description" : "Speed", "min" : -50.0, "max" :  50.0, "unit" :  "m/s", "classes" : [
+        {"name" : "ZE", "description" : "Stopped" ,  "function" :  "0", "points" : [-10.0, 0.0, 10.0]},
+        {"name" : "SP", "description" : "Small Speed"  ,"function" :  "0", "points" : [5.0, 10.0, 15.0]},
+        {"name" : "MP", "description" : "Moderate Speed" ,"function" :  "0", "points" : [10.0, 20.0, 30.0]},
+        {"name" : "LP", "description" : "Ludicrous Speed"  ,"function" :  "0", "points" : [25.0, 50.0, 50.0]}
+      ]}
     },
     "output" : {
-      "0" : { "description" : "Brake", "min" : 0.0, "max" :  10.0, "unit" :  "m/s^2"}
-    }
-  },
-  "classes" : {
-    "input" :
-    { "0" : [
-      {"name" : "ZE", "description" : "Destination" , "function" :  "0", "points" : [-20.0, 0.0, 20.0]},
-      {"name" : "SP", "description" : "Near"  ,"function" :  "0", "points" : [10.0, 25.0, 50.0]},
-      {"name" : "MP", "description" : "Medium Distance" ,"function" :  "0", "points" : [25.0, 50.0, 100.0]},
-      {"name" : "LP", "description" : "Far"  ,"function" :  "0", "points" : [100.0, 200.0, 200.0]}
-     ],
-      "1" : [
-      {"name" : "ZE", "description" : "Stopped" ,  "function" :  "0", "points" : [-10.0, 0.0, 10.0]},
-      {"name" : "SP", "description" : "Small Speed"  ,"function" :  "0", "points" : [5.0, 10.0, 15.0]},
-      {"name" : "MP", "description" : "Moderate Speed" ,"function" :  "0", "points" : [10.0, 20.0, 30.0]},
-      {"name" : "LP", "description" : "Ludicrous Speed"  ,"function" :  "0", "points" : [25.0, 50.0, 50.0]}
-     ]
-    },
-  "output" :
-    { "0" :
-    [
-      {"name" : "ZE", "description" : "No Brake",    "function" :  "0", "points" : [0.0, 0.0, 1.0]},
-      {"name" : "SP", "description" : "Weak Brake"  ,"function" :  "0", "points" : [0.0, 1.0, 3.0]},
-      {"name" : "MP", "description" : "Medium Brake" ,"function" :  "0", "points" : [2.0, 4.0, 6.0]},
-      {"name" : "LP", "description" : "Strong Brake"  ,"function" :  "0", "points" : [5.0, 10.0, 10.0]}
-     ]
+      "0" : { "description" : "Brake", "min" : 0.0, "max" :  10.0, "unit" :  "m/s^2",  "classes" :
+      [
+        {"name" : "ZE", "description" : "No Brake",    "function" :  "0", "points" : [0.0, 0.0, 1.0]},
+        {"name" : "SP", "description" : "Weak Brake"  ,"function" :  "0", "points" : [0.0, 1.0, 3.0]},
+        {"name" : "MP", "description" : "Medium Brake" ,"function" :  "0", "points" : [2.0, 4.0, 6.0]},
+        {"name" : "LP", "description" : "Strong Brake"  ,"function" :  "0", "points" : [5.0, 10.0, 10.0]}
+      ]}
     }
   },
   "rules" : [

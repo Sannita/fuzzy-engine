@@ -1,8 +1,5 @@
-package it.sannita.functions;
+package it.sannita.fuzzy.functions;
 
-import it.sannita.functions.FuzzyFunction;
-import it.sannita.functions.TriangleFunction;
-import it.sannita.functions.TriangleFunctionBuilder;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

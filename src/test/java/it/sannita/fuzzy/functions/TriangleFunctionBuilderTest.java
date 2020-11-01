@@ -1,4 +1,4 @@
-package it.sannita.functions;
+package it.sannita.fuzzy.functions;
 
 import org.junit.Test;
 
