@@ -48,11 +48,16 @@ public final class FuzzyVariableBuilder {
     }
 
     public static FuzzyVariableBuilder getBuilder(String type, String description, double min, double max, String unit){
-        return new FuzzyVariableBuilder(FuzzyVariable.Type.valueOf(type), description, min, max, unit);
+        return new FuzzyVariableBuilder(FuzzyVariable.Type.valueOf(type.toUpperCase()), description, min, max, unit);
     }
 
     public FuzzyVariableBuilder addFuzzyClass(FuzzyClass fuzzyClass){
         this.classes.add(fuzzyClass);
+        return this;
+    }
+
+    public FuzzyVariableBuilder withFuzzyClasses(List<FuzzyClass> fuzzyClasses){
+        this.classes.addAll(fuzzyClasses);
         return this;
     }
 

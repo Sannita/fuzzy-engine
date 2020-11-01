@@ -15,10 +15,10 @@ public final class TriangleFunction implements FuzzyFunction {
     private final BigDecimal q1;
     private final BigDecimal q2;
 
-    TriangleFunction(TriangleFunctionBuilder builder){
-        this.x0 = builder.getX0();
-        this.x1 = builder.getX1();
-        this.x2 = builder.getX2();
+    TriangleFunction(FunctionBuilder builder){
+        this.x0 = builder.getValues().get(0);
+        this.x1 = builder.getValues().get(1);
+        this.x2 = builder.getValues().get(2);
         this.m1 = builder.getM1();
         this.m2 = builder.getM2();
         this.q1 = builder.getQ1();

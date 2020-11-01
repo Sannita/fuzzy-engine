@@ -8,7 +8,7 @@ public class TriangleFunctionTest {
 
     @Test
     public void symmetric() {
-        FuzzyFunction f = TriangleFunctionBuilder.getBuilder(0.0,1.0,2.0).build();
+        FuzzyFunction f = FunctionBuilder.getBuilder("Triangle").withValue(0.0).withValue(1.0).withValue(2.0).buildTriangle();
 
         assertEquals(0.0, f.fx(-1.0), 0);
         assertEquals(0.0, f.fx(0.0),0);
@@ -21,7 +21,7 @@ public class TriangleFunctionTest {
 
     @Test
     public void negativeInfinity() {
-        FuzzyFunction f = TriangleFunctionBuilder.getBuilder(0.0,0.0,2.0).build();
+        FuzzyFunction f = FunctionBuilder.getBuilder("Triangle").withValue(0.0).withValue(0.0).withValue(2.0).buildTriangle();
 
         assertEquals(1.0, f.fx(-1.0), 0);
         assertEquals(1.0, f.fx(0.0),0);
@@ -34,7 +34,7 @@ public class TriangleFunctionTest {
 
     @Test
     public void positiveInfinity() {
-        FuzzyFunction f = TriangleFunctionBuilder.getBuilder(0.0,2.0,2.0).build();
+        FuzzyFunction f = FunctionBuilder.getBuilder("Triangle").withValue(0.0).withValue(2.0).withValue(2.0).buildTriangle();
 
         assertEquals(0.0, f.fx(-1.0), 0);
         assertEquals(0.0, f.fx(0.0),0);

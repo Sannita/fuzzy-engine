@@ -9,11 +9,33 @@ import java.util.List;
 import java.util.Map;
 
 public class FuzzyConfig {
-    Map<Integer, String> functions = new HashMap<>();
 
-    Map<Integer, FuzzyVariable> input = new HashMap<>();
-    Map<Integer, FuzzyVariable> output = new HashMap<>();
+    private Map<Integer, FuzzyVariable> input = new HashMap<>();
+    private Map<Integer, FuzzyVariable> output = new HashMap<>();
 
-    List<FAMRule> rules = new ArrayList<>();
+    private List<FAMRule> rules = new ArrayList<>();
 
+    public Map<Integer, FuzzyVariable> getInput() {
+        return input;
+    }
+
+    public void setInput(Map<Integer, FuzzyVariable> input) {
+        this.input = input;
+    }
+
+    public Map<Integer, FuzzyVariable> getOutput() {
+        return output;
+    }
+
+    public void setOutput(Map<Integer, FuzzyVariable> output) {
+        this.output = output;
+    }
+
+    public List<FAMRule> getRules() {
+        return rules;
+    }
+
+    public void setRules(List<FAMRule> rules) {
+        this.rules = rules;
+    }
 }
