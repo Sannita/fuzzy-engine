@@ -2,6 +2,7 @@ package it.sannita;
 
 import it.sannita.functions.FuzzyFunction;
 import it.sannita.functions.TriangleFunction;
+import it.sannita.functions.TriangleFunctionBuilder;
 
 public class Launcher {
     public static void main(String... args) {
@@ -13,7 +14,7 @@ public class Launcher {
         * */
 
 
-        FuzzyFunction f = new TriangleFunction(2.0, 2.5, 4.0);
+        FuzzyFunction f = TriangleFunctionBuilder.getBuilder(2.0, 2.5, 4.0).build();
 
 
 

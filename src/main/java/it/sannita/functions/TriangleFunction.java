@@ -3,8 +3,7 @@ package it.sannita.functions;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class TriangleFunction implements FuzzyFunction {
-    private static final int SCALE = 8;
+public final class TriangleFunction implements FuzzyFunction {
 
     private final BigDecimal x0;
     private final BigDecimal x1;
@@ -16,34 +15,14 @@ public class TriangleFunction implements FuzzyFunction {
     private final BigDecimal q1;
     private final BigDecimal q2;
 
-    public TriangleFunction(double x0, double x1, double x2){
-        this.x0 = BigDecimal.valueOf(x0);
-        this.x1 = BigDecimal.valueOf(x1);
-        this.x2 = BigDecimal.valueOf(x2);
-
-        BigDecimal one = BigDecimal.valueOf(1.0);
-        BigDecimal minusOne = BigDecimal.valueOf(-1.0);
-
-        if(this.x0.compareTo(this.x1) < 0){
-            this.m1 = one.divide(this.x1.subtract(this.x0), SCALE, RoundingMode.HALF_UP);
-            this.q1 = this.x0.multiply(minusOne).divide(this.x1.subtract(this.x0), SCALE, RoundingMode.HALF_UP);
-        }else if(this.x0.compareTo(this.x1) > 0){
-            throw new IllegalArgumentException();
-        }else{
-            this.m1 = null;
-            this.q1 = null;
-        }
-
-        if(this.x1.compareTo(this.x2) < 0){
-            this.m2 = minusOne.divide(this.x2.subtract(this.x1), SCALE, RoundingMode.HALF_UP);
-            this.q2 = this.x2.divide(this.x2.subtract(this.x1), SCALE, RoundingMode.HALF_UP);
-        }else if(this.x1.compareTo(this.x2) > 0){
-            throw new IllegalArgumentException();
-        }else{
-            this.m2 = null;
-            this.q2 = null;
-        }
-
+    TriangleFunction(TriangleFunctionBuilder builder){
+        this.x0 = builder.getX0();
+        this.x1 = builder.getX1();
+        this.x2 = builder.getX2();
+        this.m1 = builder.getM1();
+        this.m2 = builder.getM2();
+        this.q1 = builder.getQ1();
+        this.q2 = builder.getQ2();
     }
 
     @Override
