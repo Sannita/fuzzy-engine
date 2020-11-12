@@ -1,13 +1,9 @@
 package it.sannita.fuzzy;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
-import it.sannita.fuzzy.configuration.ConfigDeserializer;
 import it.sannita.fuzzy.configuration.ConfigFactory;
 import it.sannita.fuzzy.configuration.FuzzyConfig;
 
 import java.io.IOException;
-import java.io.InputStream;
 
 public class Launcher {
     public static void main(String... args) throws IOException {

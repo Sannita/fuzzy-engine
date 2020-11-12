@@ -16,12 +16,12 @@ import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class ConfigDeserializer extends StdDeserializer<FuzzyConfig> {
-    public ConfigDeserializer(){
+final class ConfigDeserializer extends StdDeserializer<FuzzyConfig> {
+    ConfigDeserializer(){
         this(null);
     }
 
-    protected ConfigDeserializer(Class<?> vc) {
+    ConfigDeserializer(Class<?> vc) {
         super(vc);
     }
 
@@ -32,7 +32,7 @@ public class ConfigDeserializer extends StdDeserializer<FuzzyConfig> {
 
         Map<Integer, FuzzyVariable> inputs = readVariables(jsonParser, node,"input");
         Map<Integer, FuzzyVariable> outputs = readVariables(jsonParser, node,"output");
-        List<FAMRule> rules = readRules(jsonParser, node,"rules");
+        List<FAMRule> rules = readRules(jsonParser, node);
 
         return new FuzzyConfig(inputs, outputs, rules);
     }
@@ -55,18 +55,7 @@ public class ConfigDeserializer extends StdDeserializer<FuzzyConfig> {
             Iterator<JsonNode> elements = value.get("classes").elements();
             while(elements.hasNext()){
                 JsonNode element = elements.next();
-                String name = element.get("name").asText();
-                String desc = element.get("description").asText();
-                JsonNode functionNode = element.get("function");
-
-                String funcName = functionNode.get("type").asText();
-
-                JsonParser parser = functionNode.get("points").traverse();
-                parser.setCodec(jsonParser.getCodec());
-                double[] points = parser.readValueAs(new TypeReference<double[]>() {});
-
-                FuzzyFunction function = FunctionBuilder.getBuilder(funcName).withValues(points).build();
-                FuzzyClass fuzzyClass = new FuzzyClass(name, desc, function);
+                FuzzyClass fuzzyClass = getFuzzyClass(jsonParser, element);
                 classes.add(fuzzyClass);
             }
 
@@ -77,8 +66,23 @@ public class ConfigDeserializer extends StdDeserializer<FuzzyConfig> {
         return result;
     }
 
-    private List<FAMRule> readRules(JsonParser jsonParser, JsonNode node, String type) throws IOException {
-        JsonParser parser = node.get(type).traverse();
+    private FuzzyClass getFuzzyClass(JsonParser jsonParser, JsonNode element) throws IOException {
+        String name = element.get("name").asText();
+        String desc = element.get("description").asText();
+        JsonNode functionNode = element.get("function");
+
+        String funcName = functionNode.get("type").asText();
+
+        JsonParser parser = functionNode.get("points").traverse();
+        parser.setCodec(jsonParser.getCodec());
+        double[] points = parser.readValueAs(new TypeReference<double[]>() {});
+
+        FuzzyFunction function = FunctionBuilder.getBuilder(funcName).withValues(points).build();
+        return new FuzzyClass(name, desc, function);
+    }
+
+    private List<FAMRule> readRules(JsonParser jsonParser, JsonNode node) throws IOException {
+        JsonParser parser = node.get("rules").traverse();
         parser.setCodec(jsonParser.getCodec());
         String[] rules = parser.readValueAs(new TypeReference<String[]>() {});
 

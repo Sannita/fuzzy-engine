@@ -3,12 +3,10 @@ package it.sannita.fuzzy.configuration;
 import it.sannita.fuzzy.models.FAMRule;
 import it.sannita.fuzzy.models.FuzzyVariable;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class FuzzyConfig {
+public final class FuzzyConfig {
 
     private final Map<Integer, FuzzyVariable> input;
     private final Map<Integer, FuzzyVariable> output;
