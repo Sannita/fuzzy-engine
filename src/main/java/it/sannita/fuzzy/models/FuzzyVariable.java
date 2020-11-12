@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public final class FuzzyVariable {
-    enum Type{
+    public enum Type{
         INPUT, OUTPUT
     }
 
@@ -17,7 +17,7 @@ public final class FuzzyVariable {
 
     private final List<FuzzyClass> classes;
 
-    public FuzzyVariable(FuzzyVariableBuilder builder) {
+    FuzzyVariable(FuzzyVariableBuilder builder) {
         this.type = builder.getType();
         this.description = builder.getDescription();
         this.min = builder.getMin();

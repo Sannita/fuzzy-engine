@@ -1,0 +1,17 @@
+{
+  "input" : {
+    "0" : { "description" : "Distance", "min" : -200.0, "max" :  200.0, "unit" :  "m", "classes" : [
+      {"name" : "ZE", "description" : "Destination" , "function" : { "type" : "Triangle", "points" : [-20.0, 0.0, 20.0] } }
+    ]
+    }
+  },
+  "output" : {
+    "0" : { "description" : "Brake", "min" : 0.0, "max" :  10.0, "unit" :  "m/s^2",  "classes" :
+    [
+      {"name" : "ZE", "description" : "No Brake",    "function" :  { "type" : "Triangle", "points" : [0.0, 0.0, 1.0] } }
+    ]}
+  },
+  "rules" : [
+    "ZE * ZE = ZE"
+  ]
+}

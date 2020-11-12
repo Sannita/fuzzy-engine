@@ -3,6 +3,7 @@ package it.sannita.fuzzy;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import it.sannita.fuzzy.configuration.ConfigDeserializer;
+import it.sannita.fuzzy.configuration.ConfigFactory;
 import it.sannita.fuzzy.configuration.FuzzyConfig;
 
 import java.io.IOException;
@@ -17,14 +18,7 @@ public class Launcher {
 4) Modalità di de fuzzyficazione.
         * */
 
-        InputStream stream = ClassLoader.getSystemResourceAsStream("input.json");
-
-        ObjectMapper mapper = new ObjectMapper();
-        SimpleModule module = new SimpleModule();
-        module.addDeserializer(FuzzyConfig.class, new ConfigDeserializer());
-        mapper.registerModule(module);
-
-        FuzzyConfig result = mapper.readValue(stream, FuzzyConfig.class);
-
+        FuzzyConfig fuzzyConfig = ConfigFactory.getConfigFromResource("input.json");
+        
     }
 }

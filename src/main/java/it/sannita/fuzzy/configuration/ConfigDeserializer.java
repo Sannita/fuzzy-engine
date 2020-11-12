@@ -14,6 +14,7 @@ import it.sannita.fuzzy.models.FuzzyVariableBuilder;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class ConfigDeserializer extends StdDeserializer<FuzzyConfig> {
     public ConfigDeserializer(){
@@ -31,13 +32,9 @@ public class ConfigDeserializer extends StdDeserializer<FuzzyConfig> {
 
         Map<Integer, FuzzyVariable> inputs = readVariables(jsonParser, node,"input");
         Map<Integer, FuzzyVariable> outputs = readVariables(jsonParser, node,"output");
-        List<FAMRule> rules = readRules();
+        List<FAMRule> rules = readRules(jsonParser, node,"rules");
 
-        FuzzyConfig result = new FuzzyConfig();
-        result.setInput(inputs);
-        result.setOutput(outputs);
-        result.setRules(rules);
-        return result;
+        return new FuzzyConfig(inputs, outputs, rules);
     }
 
     private Map<Integer, FuzzyVariable> readVariables(JsonParser jsonParser, JsonNode node, String type) throws IOException {
@@ -64,7 +61,7 @@ public class ConfigDeserializer extends StdDeserializer<FuzzyConfig> {
 
                 String funcName = functionNode.get("type").asText();
 
-                JsonParser parser = functionNode.findValue("points").traverse();
+                JsonParser parser = functionNode.get("points").traverse();
                 parser.setCodec(jsonParser.getCodec());
                 double[] points = parser.readValueAs(new TypeReference<double[]>() {});
 
@@ -80,7 +77,11 @@ public class ConfigDeserializer extends StdDeserializer<FuzzyConfig> {
         return result;
     }
 
-    private List<FAMRule> readRules() {
-        return new ArrayList<>();
+    private List<FAMRule> readRules(JsonParser jsonParser, JsonNode node, String type) throws IOException {
+        JsonParser parser = node.get(type).traverse();
+        parser.setCodec(jsonParser.getCodec());
+        String[] rules = parser.readValueAs(new TypeReference<String[]>() {});
+
+        return Arrays.stream(rules).map(FAMRule::new).collect(Collectors.toList());
     }
 }

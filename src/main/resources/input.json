@@ -1,28 +1,28 @@
 {
-    "input" : {
-      "0" : { "description" : "Distance", "min" : -200.0, "max" :  200.0, "unit" :  "m", "classes" : [
-        {"name" : "ZE", "description" : "Destination" , "function" : { "type" : "Triangle", "points" : [-20.0, 0.0, 20.0] } },
-        {"name" : "SP", "description" : "Near"  ,"function" : { "type" : "Triangle", "points" : [10.0, 25.0, 50.0] } },
-        {"name" : "MP", "description" : "Medium Distance" ,"function" : { "type" : "Triangle", "points" : [25.0, 50.0, 100.0] } },
-        {"name" : "LP", "description" : "Far"  ,"function" :  { "type" : "Triangle", "points" : [100.0, 200.0, 200.0] } }
-      ]
-      },
-      "1" : { "description" : "Speed", "min" : -50.0, "max" :  50.0, "unit" :  "m/s", "classes" : [
-        {"name" : "ZE", "description" : "Stopped" ,  "function" : { "type" : "Triangle", "points" : [-10.0, 0.0, 10.0] } },
-        {"name" : "SP", "description" : "Small Speed"  ,"function" : { "type" : "Triangle", "points" : [5.0, 10.0, 15.0] } },
-        {"name" : "MP", "description" : "Moderate Speed" ,"function" : { "type" : "Triangle", "points" : [10.0, 20.0, 30.0] } },
-        {"name" : "LP", "description" : "Ludicrous Speed"  ,"function" : { "type" : "Triangle", "points" : [25.0, 50.0, 50.0] } }
-      ]}
+  "input" : {
+    "0" : { "description" : "Distance", "min" : -200.0, "max" :  200.0, "unit" :  "m", "classes" : [
+      {"name" : "ZE", "description" : "Destination" , "function" : { "type" : "Triangle", "points" : [-20.0, 0.0, 20.0] } },
+      {"name" : "SP", "description" : "Near"  ,"function" : { "type" : "Triangle", "points" : [10.0, 25.0, 50.0] } },
+      {"name" : "MP", "description" : "Medium Distance" ,"function" : { "type" : "Triangle", "points" : [25.0, 50.0, 100.0] } },
+      {"name" : "LP", "description" : "Far"  ,"function" :  { "type" : "Triangle", "points" : [100.0, 200.0, 200.0] } }
+    ]
     },
-    "output" : {
-      "0" : { "description" : "Brake", "min" : 0.0, "max" :  10.0, "unit" :  "m/s^2",  "classes" :
-      [
-        {"name" : "ZE", "description" : "No Brake",    "function" :  { "type" : "Triangle", "points" : [0.0, 0.0, 1.0] } },
-        {"name" : "SP", "description" : "Weak Brake"  ,"function" :  { "type" : "Triangle", "points" : [0.0, 1.0, 3.0] } },
-        {"name" : "MP", "description" : "Medium Brake" ,"function" :  { "type" : "Triangle", "points" : [2.0, 4.0, 6.0] } },
-        {"name" : "LP", "description" : "Strong Brake"  ,"function" :  { "type" : "Triangle", "points" : [5.0, 10.0, 10.0] } }
-      ]}
-    },
+    "1" : { "description" : "Speed", "min" : -50.0, "max" :  50.0, "unit" :  "m/s", "classes" : [
+      {"name" : "ZE", "description" : "Stopped" ,  "function" : { "type" : "Triangle", "points" : [-10.0, 0.0, 10.0] } },
+      {"name" : "SP", "description" : "Small Speed"  ,"function" : { "type" : "Triangle", "points" : [5.0, 10.0, 15.0] } },
+      {"name" : "MP", "description" : "Moderate Speed" ,"function" : { "type" : "Triangle", "points" : [10.0, 20.0, 30.0] } },
+      {"name" : "LP", "description" : "Ludicrous Speed"  ,"function" : { "type" : "Triangle", "points" : [25.0, 50.0, 50.0] } }
+    ]}
+  },
+  "output" : {
+    "0" : { "description" : "Brake", "min" : 0.0, "max" :  10.0, "unit" :  "m/s^2",  "classes" :
+    [
+      {"name" : "ZE", "description" : "No Brake",    "function" :  { "type" : "Triangle", "points" : [0.0, 0.0, 1.0] } },
+      {"name" : "SP", "description" : "Weak Brake"  ,"function" :  { "type" : "Triangle", "points" : [0.0, 1.0, 3.0] } },
+      {"name" : "MP", "description" : "Medium Brake" ,"function" :  { "type" : "Triangle", "points" : [2.0, 4.0, 6.0] } },
+      {"name" : "LP", "description" : "Strong Brake"  ,"function" :  { "type" : "Triangle", "points" : [5.0, 10.0, 10.0] } }
+    ]}
+  },
   "rules" : [
     "ZE * ZE = ZE",
     "ZE * PS = PS",
